@@ -1,21 +1,14 @@
 <!doctype html>
-  <head>
-        <!-- build:css(.tmp) styles/main.css -->
-        <link rel="stylesheet" href="styles/main.css">
-        <!-- endbuild -->
-</head>
-  <body ng-app="IntroductionAngularJSApp">
-
-
-    <!-- Add your site or application content here -->
-    <div class="container" ng-view=""></div>
-
-    <script src="bower_components/jquery/jquery.js"></script>
+<html ng-app>
+<head>
     <script src="bower_components/angular/angular.js"></script>
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <!-- endbuild -->
-  </body>
+</head>
+<body>
+<div>
+    Artist: <input type="text" ng-model="artist"/>
+</div>
+<span ng-bind="artist"></span>
+
+</body>
 </html>
