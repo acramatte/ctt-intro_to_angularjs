@@ -24,8 +24,16 @@
                                 redirectTo: '/artists'
                             });
                 });
-        myApp.controller('ArtistController', function($scope) {
-            $scope.artists = ['Baschi CD', 'John Petrucci', 'John Lennon'];
+        myApp.factory('ArtistsFactory', function() {
+            var factory = {};
+            var artists = ['Baschi CD', 'John Petrucci', 'John Lennon'];
+            factory.getArtists = function() {
+                return artists;
+            }
+            return factory;
+        });
+        myApp.controller('ArtistController', function($scope, ArtistsFactory) {
+            $scope.artists = ArtistsFactory.getArtists();
         });
         myApp.controller('SongController', function($scope) {
             $scope.songs = ['Somewhere over the rainbow', 'The number of the beast', 'Hallowed Be Thy Name'];
