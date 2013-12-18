@@ -5,13 +5,14 @@
 </head>
   <body ng-app="myApp">
 
+    <!-- Placeholder for views -->
     <div class="container" ng-view=""></div>
 
     <script>
         var myApp = angular.module('myApp', ['ngRoute'])
                 .config(function ($routeProvider) {
                     $routeProvider
-                            .when('/', {
+                            .when('/artists', {
                                 templateUrl: 'views/artists.html',
                                 controller: 'ArtistController'
                             })
@@ -20,7 +21,7 @@
                                 controller: 'SongController'
                             })
                             .otherwise({
-                                redirectTo: '/'
+                                redirectTo: '/artists'
                             });
                 });
         myApp.controller('ArtistController', function($scope) {

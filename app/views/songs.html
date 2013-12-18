@@ -1,0 +1,11 @@
+<div>
+    <h1>Songs</h1>
+    Songs: <input type="text" ng-model="name">
+    <div>
+        <ul>
+            <li ng-repeat="song in songs| filter:name">
+                {{ song }}
+            </li>
+        </ul>
+    </div>
+</div>
