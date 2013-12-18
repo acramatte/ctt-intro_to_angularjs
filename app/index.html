@@ -1,21 +1,35 @@
 <!doctype html>
   <head>
-        <!-- build:css(.tmp) styles/main.css -->
-        <link rel="stylesheet" href="styles/main.css">
-        <!-- endbuild -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
 </head>
-  <body ng-app="IntroductionAngularJSApp">
+  <body ng-app="myApp">
 
-
-    <!-- Add your site or application content here -->
     <div class="container" ng-view=""></div>
 
-    <script src="bower_components/jquery/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
+    <script>
+        var myApp = angular.module('myApp', ['ngRoute'])
+                .config(function ($routeProvider) {
+                    $routeProvider
+                            .when('/', {
+                                templateUrl: 'views/artists.html',
+                                controller: 'ArtistController'
+                            })
+                            .when('/songs', {
+                                templateUrl: 'views/songs.html',
+                                controller: 'SongController'
+                            })
+                            .otherwise({
+                                redirectTo: '/'
+                            });
+                });
+        myApp.controller('ArtistController', function($scope) {
+            $scope.artists = ['Baschi CD', 'John Petrucci', 'John Lennon'];
+        });
+        myApp.controller('SongController', function($scope) {
+            $scope.songs = ['Somewhere over the rainbow', 'The number of the beast', 'Hallowed Be Thy Name'];
+        });
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <!-- endbuild -->
+    </script>
   </body>
 </html>
